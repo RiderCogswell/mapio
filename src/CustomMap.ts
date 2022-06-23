@@ -1,6 +1,11 @@
-// can be used to creat e an instance or have its type referred to
-import { User } from "./User";
-import { Company } from "./Company";
+// imported things in curly brackets can be used to creat an instance or have its type referred to
+// instructions for addMarker
+interface Mappable {
+  location: {
+    lat: number;
+    lng: number;
+  };
+}
 
 export class CustomMap {
   // allows us to be the only one able to reach into this instance
@@ -17,7 +22,7 @@ export class CustomMap {
   }
 
   // bad code!!! works but it is too specific and will create too many requests
-  addMarker(mappable: User | Company): void {
+  addMarker(mappable: Mappable): void {
     new google.maps.Marker({
       map: this.googleMap,
       position: {
@@ -26,14 +31,4 @@ export class CustomMap {
       }
     });
   }
-
-  // addCompanyMarker(company: Company): void {
-  //   new google.maps.Marker({
-  //     map: this.googleMap,
-  //     position: {
-  //       lat: company.location.lat,
-  //       lng: company.location.lng
-  //     }
-  //   })
-  // }
 }
