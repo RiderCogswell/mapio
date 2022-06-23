@@ -136951,7 +136951,28 @@ function () {
         lng: 0
       }
     });
-  }
+  } // bad code!!!
+
+
+  CustomMap.prototype.addUserMarker = function (user) {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: user.location.lat,
+        lng: user.location.lng
+      }
+    });
+  };
+
+  CustomMap.prototype.addCompanyMarker = function (company) {
+    new google.maps.Marker({
+      map: this.googleMap,
+      position: {
+        lat: company.location.lat,
+        lng: company.location.lng
+      }
+    });
+  };
 
   return CustomMap;
 }();
@@ -136973,6 +136994,8 @@ var CustomMap_1 = require("./CustomMap");
 var user = new User_1.User();
 var company = new Company_1.Company();
 var customMap = new CustomMap_1.CustomMap('map');
+customMap.addUserMarker(user);
+customMap.addCompanyMarker(company);
 console.log(user);
 console.log(company);
 console.log(customMap);
@@ -137004,7 +137027,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60307" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53045" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
