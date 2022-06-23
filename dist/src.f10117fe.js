@@ -136943,8 +136943,8 @@ exports.CustomMap = void 0;
 var CustomMap =
 /** @class */
 function () {
-  function CustomMap() {
-    this.googleMap = new google.maps.Map(document.getElementById('map'), {
+  function CustomMap(divId) {
+    this.googleMap = new google.maps.Map(document.getElementById(divId), {
       zoom: 1,
       center: {
         lat: 0,
@@ -136972,7 +136972,7 @@ var CustomMap_1 = require("./CustomMap");
 
 var user = new User_1.User();
 var company = new Company_1.Company();
-var customMap = new CustomMap_1.CustomMap();
+var customMap = new CustomMap_1.CustomMap('map');
 console.log(user);
 console.log(company);
 console.log(customMap);
@@ -137004,7 +137004,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57225" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60307" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
