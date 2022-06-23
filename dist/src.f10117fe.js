@@ -136888,6 +136888,7 @@ var User =
 /** @class */
 function () {
   function User() {
+    this.color = 'red';
     this.name = faker_1.default.name.firstName();
     this.location = {
       // faker returns a string so we have to use parseFloat() to parse the numbers out, with the decimal intact
@@ -136895,6 +136896,10 @@ function () {
       lng: parseFloat(faker_1.default.address.longitude())
     };
   }
+
+  User.prototype.markerContent = function () {
+    return "User Name: ".concat(this.name);
+  };
 
   return User;
 }();
@@ -136920,6 +136925,7 @@ var Company =
 /** @class */
 function () {
   function Company() {
+    this.color = 'red';
     this.companyName = faker_1.default.company.companyName();
     this.catchPhrase = faker_1.default.company.catchPhrase();
     this.location = {
@@ -136927,6 +136933,10 @@ function () {
       lng: parseFloat(faker_1.default.address.longitude())
     };
   }
+
+  Company.prototype.markerContent = function () {
+    return "\n      <div>\n        <h1>Company Name: ".concat(this.companyName, "</h1>\n        <h3>Catch Phrase: ").concat(this.catchPhrase, "</h3>\n      </div>\n    ");
+  };
 
   return Company;
 }();
@@ -136951,7 +136961,7 @@ function () {
         lng: 0
       }
     });
-  } // bad code!!! works but it is too specific and will create too many requests
+  } // we want mappable to carry a method that can call a string to put in the info window
 
 
   CustomMap.prototype.addMarker = function (mappable) {
@@ -136966,7 +136976,7 @@ function () {
     });
     marker.addListener('click', function () {
       var infoWindow = new google.maps.InfoWindow({
-        content: 'Hi'
+        content: mappable.markerContent()
       });
       infoWindow.open(_this.googleMap, marker);
     });
@@ -136994,9 +137004,6 @@ var company = new Company_1.Company();
 var customMap = new CustomMap_1.CustomMap('map');
 customMap.addMarker(user);
 customMap.addMarker(company);
-console.log(user);
-console.log(company);
-console.log(customMap);
 },{"./User":"src/User.ts","./Company":"src/Company.ts","./CustomMap":"src/CustomMap.ts"}],"../../../.nvm/versions/node/v18.3.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -137025,7 +137032,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49619" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49676" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

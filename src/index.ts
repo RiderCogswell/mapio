@@ -10,8 +10,3 @@ const customMap = new CustomMap('map');
 
 customMap.addMarker(user);
 customMap.addMarker(company);
-
-
-console.log(user);
-console.log(company);
-console.log(customMap);
